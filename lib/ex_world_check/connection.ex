@@ -99,7 +99,8 @@ defmodule ExWorldCheck.Connection do
     [
       {Tesla.Middleware.BaseUrl, base_url},
       {Tesla.Middleware.Headers, [{"user-agent", user_agent}]},
-      {Tesla.Middleware.EncodeJson, engine: json_engine}
+      {Tesla.Middleware.EncodeJson, engine: json_engine},
+      {Tesla.Middleware.Logger, format: &log_format/3}
       | middleware
     ]
   end
@@ -111,5 +112,9 @@ defmodule ExWorldCheck.Connection do
     :tesla
     |> Application.get_env(__MODULE__, [])
     |> Keyword.get(:adapter, nil)
+  end
+
+  defp log_format(request, response, time) do
+    "request=#{inspect(request)} response=#{inspect(response)} time=#{time}\n"
   end
 end
