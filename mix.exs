@@ -1,14 +1,14 @@
 defmodule ExWorldCheck.Mixfile do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.2.0"
   @scm_url "https://github.com/fundimmo/ex_world_check"
 
   def project do
     [
       app: :ex_world_check,
       description: "Elixir API client for Refinitiv World-Check One API.",
-      elixir: "~> 1.16",
+      elixir: "~> 1.18",
       version: @version,
       source_url: @scm_url,
       build_embedded: Mix.env() == :prod,
@@ -38,11 +38,11 @@ defmodule ExWorldCheck.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:poison, "~> 3.1"},
       {:tesla, "~> 1.11"},
 
       # Dev dependencies
-      {:ex_doc, "~> 0.34", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
     ]
   end
 

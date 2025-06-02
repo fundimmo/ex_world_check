@@ -26,7 +26,7 @@ your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:ex_world_check, "~> 0.1.0"}]
+  [{:ex_world_check, "~> 0.2.0"}]
 end
 ```
 
